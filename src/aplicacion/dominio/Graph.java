@@ -1,5 +1,9 @@
 package aplicacion.dominio;
 import java.util.*;
+
+import org.jgrapht.*;
+
+
 public class Graph<V> {
     private Map<V, Set<V>> adjacencyList = new HashMap<>();
     public boolean addVertex(V vertice){
@@ -21,7 +25,17 @@ public class Graph<V> {
         adjacencyList.get(v2).add(v1);
         return true;
     }
-    
+    public Set<V> obtainAdjacents(V v) throws Exception{
+        if (!adjacencyList.containsKey(v)) {
+            throw new Exception("El grafo no contiene el vértice dado");
+        }
+        Set<V> adjacents = new HashSet<>();
+        for (V eV : adjacencyList.edgesOf(v)) {
+            V adjacent = adjacencyList.getOppositeVertex(adjacencyList, eV, v);
+            adjacents.add(adjacent);
+        }
+        return adjacents;
+    }
 
     
 }
