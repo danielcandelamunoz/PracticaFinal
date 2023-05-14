@@ -1,6 +1,15 @@
 package aplicacion;
 import dominio.Graph;
+
+/**
+ * The type Principal.
+ */
 public class Principal {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         //printeamos los metodos de la clase graph
         Graph<String> grafo = new Graph<>();
